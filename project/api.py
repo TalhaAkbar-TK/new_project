@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import config
+from project.app.db import db
+from flask_migrate import Migrate
 
-db = SQLAlchemy()
-
+migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     app.config[
@@ -11,4 +12,6 @@ def create_app():
     ] = f"postgresql+psycopg2://{config.DB_USER}:{config.DB_PWD}@{config.DB_URL}:{config.DB_PORT}/{config.DB_NAME}"
 
     db.init_app(app)
+    migrate.init_app(app,db)
+    from project.app.models import Department,Empolyee,Job
     return app
