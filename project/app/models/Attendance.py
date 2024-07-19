@@ -1,12 +1,15 @@
-# from project.app.db import db
+from project.app.db import db
+from sqlalchemy import Date,Time
 # from datetime import datetime
 
-# class Attendance(db.Model):
-#     Attendance_id = db.Column(db.Interger,primary_key=True)
-#     # Empolyee_id 
-#     Date =db.Column(db.Date,nullable=False,default=datetime.utcnow().date)
-#     CheckInTime = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-#     CheckOutTime = db.Column(db.DateTime,nullable=True)
-#     # CheckInTime = db.Column
-#     # checkouttime
+class Attendance(db.Model):
+    __tablename__ = 'attendance'
+    attendance_id = db.Column(db.Integer,primary_key=True)
+    date = db.Column(Date, nullable=False)
+    check_in_time = db.Column(Time, nullable=True)
+    check_out_time = db.Column(Time, nullable=True)
+    employee_id = db.Column(db.Integer,db.ForeignKey('employee.employee_id'),nullable=False)
+    employees = db.relationship('Employee',back_populates='attendances')
+    # CheckInTime = db.Column
+    # checkouttime
     

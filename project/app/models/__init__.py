@@ -1,3 +1,3 @@
 from .Department import Department
-from .Empolyee import Empolyee
+from .Employee import Employee
 from .Job import Job
