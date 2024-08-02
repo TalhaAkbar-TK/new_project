@@ -7,7 +7,7 @@ from project.blueprint.department import bp as department_bp
 from project.blueprint.job import bp as job_bp
 from project.blueprint.employee import bp as employee_bp
 from project.blueprint.attendance import bp as attendance_bp
-
+from project.blueprint.leave import bp as leave_bp
 migrate = Migrate()
 def create_app():
     app = Flask(__name__)
@@ -22,6 +22,7 @@ def create_app():
     app.register_blueprint(job_bp)
     app.register_blueprint(employee_bp)
     app.register_blueprint(attendance_bp)
+    app.register_blueprint(leave_bp)
     return app
 
 

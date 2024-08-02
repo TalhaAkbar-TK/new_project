@@ -15,3 +15,4 @@ class Employee(db.Model):
     job = db.relationship("Job",back_populates='employees')
     department = db.relationship('Department',back_populates='employees')
     attendances = db.relationship('Attendance',back_populates='employees')
+    leaves = db.relationship('Leave',back_populates='employees')
