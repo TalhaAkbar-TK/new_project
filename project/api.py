@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import config
 from project.app.db import db
@@ -8,12 +8,26 @@ from project.blueprint.job import bp as job_bp
 from project.blueprint.employee import bp as employee_bp
 from project.blueprint.attendance import bp as attendance_bp
 from project.blueprint.leave import bp as leave_bp
+from project.blueprint.payroll import bp as payroll_bp
+from http import HTTPStatus
+
 migrate = Migrate()
 def create_app():
     app = Flask(__name__)
     app.config[
         "SQLALCHEMY_DATABASE_URI"
     ] = f"postgresql+psycopg2://{config.DB_USER}:{config.DB_PWD}@{config.DB_URL}:{config.DB_PORT}/{config.DB_NAME}"
+    
+    @app.errorhandler(HTTPStatus.BAD_REQUEST)
+    @app.errorhandler(HTTPStatus.UNPROCESSABLE_ENTITY)
+    # @app.errorhandler(HTTPStatus.TOO_MANY_REQUESTS)
+    def webargs_error_handler(err):
+        headers = err.data.get("headers", None)
+        messages = err.data.get("messages", ["Invalid request."])
+        if headers:
+            return jsonify({"errors": messages}), err.code, headers
+        else:
+            return jsonify({"errors": messages}), err.code
 
     db.init_app(app)
     migrate.init_app(app,db)
@@ -23,6 +37,7 @@ def create_app():
     app.register_blueprint(employee_bp)
     app.register_blueprint(attendance_bp)
     app.register_blueprint(leave_bp)
+    app.register_blueprint(payroll_bp)
     return app
 
 
