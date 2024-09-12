@@ -1,8 +1,10 @@
 from project.app.db import db
 from project.app.models.Department import Department
+
+
 class DepartmentRepository:
     @staticmethod
-    def add_department(args,session):
+    def add_department(args, session):
 
         try:
             department = Department(**args)
