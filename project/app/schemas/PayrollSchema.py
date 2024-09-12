@@ -18,5 +18,7 @@ class PayrollSchema(Schema):
             min=2, max=30, error="deduction field range must be between 2 to 30"
         )
     )
-    paydate = fields.Date(requried=True)
+    paydate = fields.Date(
+        requried=True, error="date format must be like that 2024-10-01"
+    )
     employee_id = fields.Integer(required=True)

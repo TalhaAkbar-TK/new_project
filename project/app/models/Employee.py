@@ -13,7 +13,13 @@ class Employee(db.Model):
 
     job = db.relationship("Job", back_populates="employees")
     department = db.relationship("Department", back_populates="employees")
-    attendances = db.relationship("Attendance", back_populates="employees")
-    leaves = db.relationship("Leave", back_populates="employees")
-    payrolls = db.relationship("Payroll", back_populates="employees")
-    performances = db.relationship("Performance", back_populates="employees")
+    attendances = db.relationship(
+        "Attendance", cascade="all,delete", back_populates="employees"
+    )
+    leaves = db.relationship("Leave", cascade="all,delete", back_populates="employees")
+    payrolls = db.relationship(
+        "Payroll", cascade="all,delete", back_populates="employees"
+    )
+    performances = db.relationship(
+        "Performance", cascade="all,delete", back_populates="employees"
+    )

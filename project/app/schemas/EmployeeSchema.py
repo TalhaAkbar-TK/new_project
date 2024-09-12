@@ -1,4 +1,10 @@
 from marshmallow import Schema, fields, validate
+from project.app.schemas.AttendanceSchema import AttendanceSchema
+from project.app.schemas.PerformanceSchema import PerformanceSchema
+from project.app.schemas.JobSchema import JobSchema
+from project.app.schemas.DepartmentSchema import DepartmentSchema
+from project.app.schemas.LeaveSchema import LeaveSchema
+from project.app.schemas.PayrollSchema import PayrollSchema
 
 
 class EmployeeSchema(Schema):
@@ -23,3 +29,17 @@ class EmployeeSchema(Schema):
     )
     department_id = fields.Integer(required=True)
     job_id = fields.Integer(required=True)
+
+
+class All_Details_EmployeeSchema(EmployeeSchema):
+
+    attendances = fields.Nested("AttendanceSchema", many=True)
+    department = fields.Nested("DepartmentSchema")
+    job = fields.Nested("JobSchema")
+    leaves = fields.Nested("LeaveSchema", many=True)
+    payrolls = fields.Nested("PayrollSchema")
+    performances = fields.Nested("PerformanceSchema")
+
+
+class update_employee_schema(EmployeeSchema):
+    employee_id = fields.Integer(required=True)
