@@ -11,3 +11,7 @@ class PerformanceSchema(Schema):
         )
     )
     employee_id = fields.Integer(required=True)
+
+
+class update_performance_schema(PerformanceSchema):
+    performance_id = fields.Integer(required=True)

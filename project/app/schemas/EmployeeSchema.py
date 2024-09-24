@@ -1,10 +1,11 @@
 from marshmallow import Schema, fields, validate
-from project.app.schemas.AttendanceSchema import AttendanceSchema
-from project.app.schemas.PerformanceSchema import PerformanceSchema
-from project.app.schemas.JobSchema import JobSchema
-from project.app.schemas.DepartmentSchema import DepartmentSchema
-from project.app.schemas.LeaveSchema import LeaveSchema
-from project.app.schemas.PayrollSchema import PayrollSchema
+
+# from project.app.schemas.AttendanceSchema import AttendanceSchema
+# from project.app.schemas.PerformanceSchema import PerformanceSchema
+# from project.app.schemas.JobSchema import JobSchema
+# from project.app.schemas.DepartmentSchema import DepartmentSchema
+# from project.app.schemas.LeaveSchema import LeaveSchema
+# from project.app.schemas.PayrollSchema import PayrollSchema
 
 
 class EmployeeSchema(Schema):

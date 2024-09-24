@@ -23,6 +23,5 @@ class JobSchema(Schema):
     )
 
 
-# class JobSchema(SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Job
+class update_job_schema(JobSchema):
+    job_id = fields.Integer(required=True)

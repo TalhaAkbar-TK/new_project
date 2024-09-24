@@ -13,3 +13,18 @@ class DepartmentRepository:
             return department
         except Exception as e:
             raise e
+
+    @staticmethod
+    def getting_department_by_id(args, session):
+        result = (
+            session.query(Department)
+            .filter(Department.department_id == args.get("department_id"))
+            .first()
+        )
+        return result
+
+    def updating_department(args, session, department):
+        if args.get("name"):
+            department.name = args["name"]
+        session.commit()
+        return department

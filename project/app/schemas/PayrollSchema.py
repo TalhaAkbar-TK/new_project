@@ -22,3 +22,7 @@ class PayrollSchema(Schema):
         requried=True, error="date format must be like that 2024-10-01"
     )
     employee_id = fields.Integer(required=True)
+
+
+class update_payroll_schema(PayrollSchema):
+    payroll_id = fields.Integer(required=True)

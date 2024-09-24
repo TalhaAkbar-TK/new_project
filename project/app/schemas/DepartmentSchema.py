@@ -6,3 +6,7 @@ class DepartmentSchema(Schema):
     name = fields.String(
         validate=validate.Length(min=3, max=50, error="name should be in range 3 to 50")
     )
+
+
+class Update_DepartmentSchema(DepartmentSchema):
+    department_id = fields.Integer(required=True)
