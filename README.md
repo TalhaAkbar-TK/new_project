@@ -1,6 +1,6 @@
 
 
-# 🛍️ New Retail App
+# 🛍️ Retail App
 
 A modern retail management application designed to streamline shopping experiences, inventory tracking, and customer engagement. Built with scalability, modularity, and ease of deployment in mind.
 
