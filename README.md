@@ -94,11 +94,6 @@ DEBUG=True
 
 Run unit and integration tests:
 
-```bash
-pytest
-# or
-npm test
-```
 ---
 
 ## 🤝 Contributing
